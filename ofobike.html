@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ofo 共享单车</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  html,body{
+    height: 100%;
+    font-size: 12px;
+    background: #f6f6f6;
+  }
+  button{
+    border: none;
+    outline: none;
+  }
+  .container{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .flex{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .container .header{
+    height: 45px;
+    padding-left: 1.6rem;
+    background: #fff;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0,0,0,.3);
+    z-index: 999;
+  }
+  .header h3{
+    font-size: 1.8rem;
+    font-weight: 500;
+    -webkit-flex:1;
+    flex:1;
+  }
+  .header .fr{
+    font-size: 1.4rem;
+    color: #1e1e1e;
+    font-weight: 400;
+    padding-right: 1rem;
+    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
+  }
+  .container .content{
+    -webkit-flex:1;
+    flex:1;
+    overflow-y:scroll;
+    width: 100%;
+    word-break: break-all;
+    -webkit-overflow-srolling:touch;
+
+  }
+  .content .page{
+    width: 90%;
+    margin: 2rem auto;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page img{
+    width: 100%;
+  }
+  .page .desc{
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 15px;
+    background-color: #f7f7f7;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .content .inputbox{
+    width: 80%;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .content input[disabled]{
+    -webkit-flex:1;
+    flex:1;
+    border: none;
+    height: 50px;
+    border: 2px solid #f8d501;
+    outline: none;
+    width: 75%;
+    text-align: center;
+    font-size: 1.6rem;
+    background-color: #fff;
+  }
+  input::-ms-input-placeholder{text-align: center;}
+  input::-webkit-input-placeholder{text-align: center;}
+  .content .lock[disabled]{
+    margin-left: .8rem;
+    box-sizing: border-box;
+    border: none;
+    background-color: #f3f3f3;
+    color:#d0d1c9;
+    font-size: 3rem;
+  }
+  .content .lock{
+    width: 18%;
+    margin-left: .8rem;
+    box-sizing: border-box;
+    border: none;
+    background-color: #edd200;
+    color:#000;
+    font-size: 3rem;
+  }
+  .content .info{
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .container .icon{
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+  }
+  .icon .search{
+    height: 24px;
+    display: block;
+    position: absolute;
+    top:13px;
+    left: 17px;
+  }
+
+  .container .footer{
+    width: 100%;
+    background: #fff;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+
+  }
+  a{
+    text-decoration: none;
+    color: #000000;
+  }
+  .grids{
+      width: 75%;
+      flex:1;
+      position: relative;
+      overflow: hidden;
+    }
+  .footer .grids:before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid #D9D9D9;
+      transform: scaleY(0.5);
+      transform-origin:0 0;
+    }
+    .grid{
+      position: relative;
+      float: left;
+      width: 33.33333333%;
+      padding: 0 10px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 2rem;
+    }
+    .grid:before{
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+      bottom: 0;
+      border-right: 1px solid #d9d9d9;
+      transform: scaleX(.5);
+      transform-origin:100% 0;
+     }
+     .grid:after{
+       content: "";
+       position: absolute;
+       left: 0;
+       right: 0;
+       height: 1px;
+       bottom: 0;
+       border-bottom: 1px solid #d9d9d9;
+       transform: scaleY(.5);
+       transform-origin:0 100%;
+      }
+       .operate{
+        width: 25%;
+        position: relative;
+        overflow: hidden;
+      }
+      .footer .operate:before{
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          top: 0;
+          right: 0;
+          height: 1px;
+          border-top: 1px solid #D9D9D9;
+          transform: scaleY(0.5);
+          transform-origin:0 0;
+        }
+        .del{
+          width: 100%;
+          padding: 0 10px;
+          height: 120px;
+          line-height: 120px;
+          font-size: 1.6rem;
+        }
+        .assure[disabled]{
+          width: 100%;
+          padding: 0 10px;
+          height: 120px;
+          line-height: 120px;
+          font-size: 1.6rem;
+          background-color: #979797;
+          color: #fff;
+        }
+        .assure{
+          width: 100%;
+          padding: 0 10px;
+          height: 120px;
+          line-height: 120px;
+          font-size: 1.6rem;
+          background-color: #1280fa;
+          color: #fff;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="flex flex-ver">
+      <div class="header">
+        <h3>ofo
+        <span class="name">共享单车</span>
+        </h3>
+        <span class="fr">扫码用车</span>
+      </div>
+      <div class="content">
+        <div class="page">
+          <div class="img">
+            <img src="work3_03.jpg" alt="">
+          </div>
+          <div class="desc">
+            计费说明：1元/小时
+          </div>
+          <div class="inputbox">
+            <input type="text" autofocus="autofocus" disabled minlength="4" maxlength="8" name="num"placeholder="请输入车牌号">
+            <button class="lock" disabled>→</button>
+          </div>
+          <div class="info">
+            输入车牌号，获取解锁码
+          </div>
+        </div>
+        <div class="icon">
+          <img class="search"src="work3_01_03.jpg" alt="">
+        </div>
+      </div>
+      <div class="footer">
+        <div class="grids">
+          <p  class="grid">1</p>
+          <p  class="grid">2</p>
+          <p  class="grid">3</p>
+          <p  class="grid">4</p>
+          <p  class="grid">5</p>
+          <p  class="grid">6</p>
+          <p  class="grid">7</p>
+          <p  class="grid">8</p>
+          <p  class="grid">9</p>
+          <p  class="grid"></p>
+          <p  class="grid">0</p>
+          <p  class="grid"></p>
+        </div>
+        <div class="operate">
+          <span href="" class="grid del">x</span>
+          <button class="grid assure" disabled>确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const oInput=document.querySelector('input[name=num]');
+    const grids=document.querySelector('.grids');
+    const del=document.querySelector('.del');
+
+    grids.querySelectorAll('.grid').forEach(grid=>{
+      grid.addEventListener('click',function(){
+        if(oInput.value.length<8){
+        oInput.value+=`${grid.innerHTML}`;
+        }
+        if(oInput.value.length>0){
+          document.querySelector('.lock').removeAttribute('disabled');
+          document.querySelector('.assure').removeAttribute('disabled');
+        }
+        if(oInput.value.length>0 && oInput.value.length<=4){
+          document.querySelector('.info').innerHTML='车牌号一般为4-8位的数字';
+        }else{
+          document.querySelector('.info').innerHTML='温馨提示：若输错车牌号，将无法打开车锁';
+        }
+      })
+    })
+    del.addEventListener('click',function(){
+      var str=oInput.value;
+      var newstr=str.substring(0,str.length-1);
+      oInput.value=newstr;
+      if(oInput.value.length<=0){
+        document.querySelector('.info').innerHTML='输入车牌号，获取解锁码';
+        document.querySelector('.lock').setAttribute('disabled','disabled');
+        document.querySelector('.assure').setAttribute('disabled','disabled');
+      }
+    })
+    document.querySelector('.assure').addEventListener('click',function(){
+      if(oInput.value.length<4){
+        alert('请输入正确的车牌号');
+        return false;
+      }
+    })
+
+  </script>
+</body>
+</html>
